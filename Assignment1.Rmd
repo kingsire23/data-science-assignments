@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ---
 title: "Assignment 1"
 author: 'Jaunell Silvera'
@@ -73,4 +74,81 @@ Boca Raton, FL
 DJ'ing.
 
 ### **Skill Sets**
+=======
+---
+title: "Assignment 1"
+author: 'Jaunell Silvera'
+output: html_document
+---
+
+
+![](https://static1.squarespace.com/static/53a0ded4e4b0514810c15d4b/t/53a0ea40e4b0c608f456a389/1403054705778/rainbow-cat.jpg?format=500w)  
+_"I'm learning about data science!"_  
+
+
+# **Professional Background**  
+"Data Ninja!! Exceeding mediocrity by day. Sublime all the time." Data Analyst/Business Analyst/Aspiring Data Scientist.  
+
+__Senior Data Analyst__  
+_Luxury Brand Partners_  
+Nov 2015 - Present | 2yrs 7 mos  
+Miami, FL  
+
+* Heralded multi-million-dollar sales budget process and constructed a model based on prior years sales analysis.   
+* Developed first generation of monthly sales channel forecasts which influenced demand planning forecasts. 
+  Created in mind for budget control/adherence, identifying risks, and promotional opportunities.  
+* Moderated quarterly budget review meetings with top executives and other leaders to discuss and strategize budget 
+  vs. forecast.  
+* Established first generation sales dashboard utilized company-wide and by all channel’s sales teams. Worked cross 
+  functionally to automate and as a result increased departmental efficiency by 25%.  
+* Re-engineered the expense and budget tracking process for time spent by employees across various brands. Reduced 
+  process time from 2 days to 30 mins.  
+
+
+__Online Media Analyst__  
+_Infinity Sales Group, LLC_
+Jan 2015 - Oct 2015 | 10 mos  
+Boca Raton, FL  
+
+*	Transitioned from prior Data Reporting Analyst role to usher in a defined framework that was currently void in the 
+  department.  
+*	Merged internal data and external data (Google AdWords and Bing AdWords) through the development of a unique 
+  identifier which resulted in greater visibility and more efficient utilization of data.  
+*	Created first generation marketing dashboard, integrated with the company’s data warehouse for on-demand up to the 
+  minute data.  
+*	Pioneered supplementary reports designed to track campaign expenditures to identify and limit perfunctory spending. *	Cumulatively, dashboard and supplementary tracking successfully reduced spending by at least 5% month over month.  
+
+
+__Data Reporting Analyst__  
+_Infinity Sales Group, LLC_  
+Jun 2013 - Dec 2014 | 1 yr 7 mos  
+Boca Raton, FL  
+
+*	Re-designed existing sales reporting using data modeling, complex SQL query writing, Excel expertise and automation.  
+* Cultivated key internal stakeholder relationships and redeveloped KPIs which significantly enhanced reporting 
+  capabilities.  
+*	Selected to spearhead a project that involved updating metrics and coding in SQL for 30+ reports to reflect 
+  organizational changes.  
+*	Created the first generation of automated sales reports that integrated seamlessly with other sales tracking tools.  
+*	As result, due the efforts above, hours spent working went from 7 hours/day to 30 mins/day which as result 
+  transitioned into another department in the company to find the same inefficiencies and repeat.  
+
+
+__Market Research Coordinator__  
+_SunState Advisory_  
+Jun 2011 - Mar 2013 | 1 yr 10 mos  
+Boca Raton, FL  
+
+*	Collaborated with managing principal in the monthly research of home base prices within 13 Florida markets.  
+*	Assisted in the quarterly inspection of new home construction and land development across six counties in southeast Florida.  
+*	Executed research design, data collection methods and strategies to ensure quality data correlated with research objectives.  
+*	Identified abnormal deviations in data through meticulous attention to detail and made corrections as necessary.  
+*	Developed recruitment tactics, interview methods and marketing strategies for the expansion of research staff.  
+
+
+## **Interests**  
+DJ'ing.
+
+### **Skill Sets**
+>>>>>>> 36c32522e8cb583cb066ac2b3aff871db5f87864
 T-SQL, Excel, Tableau.
