@@ -1,0 +1,57 @@
+---
+title: "In_Class_Assignment"
+author: "Jaunell Silvera"
+date: "June 5, 2018"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+Use the read_csv file to read in your data and assign it to a variable called service_data.
+
+```{r}
+
+library(tidyverse)
+library(janitor)
+service_data = read_csv(file = "311_Service_Requests_-_Miami-Dade_County.csv")
+
+```
+
+Clean column names of table.
+
+```{r}
+service_data <- clean_names(service_data)
+colnames(service_data)
+```
+
+```{r}
+## How many rows and columns are in this data?
+
+nrow(service_data) ## 657544
+ncol(service_data) ## 23
+
+```
+
+```{r}
+## How many cities are represented in the data?
+
+table(service_data$city) ## 36
+
+```
+
+```{r}
+## What is the most frequently occuring issue type?
+
+table(service_data$issue_type) %>%
+  as.data.frame() ## 311 ACTIVATION - FPL (POWER LINE DOWN/POWER OUTAGE)
+
+```
+
+```{r}
+## Create a dataframe with the frequencies of each Ticket Status and their percentage from the whole. What percentage of tickets have a status of ‘CLOSED’? Name the columns and save the output as a csv titled ticket_status.csv
+
+table(service_data$ticket_status)
+```
+
+Note that the `echo = FALSE` parameter was added to the code chunk to prevent printing of the R code that generated the plot.

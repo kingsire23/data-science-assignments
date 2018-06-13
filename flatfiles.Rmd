@@ -1,0 +1,149 @@
+---
+title: "In_Class_Assignment - 6.5.18"
+author: "Jaunell Silvera"
+date: "June 5, 2018"
+output: html_document
+---
+
+
+Load libraries and assign service_data variable.
+
+```{r}
+
+library(tidyverse)
+library(janitor)
+
+service_data = read_csv(file = "311_Service_Requests_-_Miami-Dade_County.csv")
+
+```
+
+Clean column names of table.
+
+```{r}
+
+service_data <- clean_names(service_data)
+colnames(service_data)
+
+```
+
+How many rows and columns are in this data?
+
+```{r}
+
+nrow(service_data) ## 657544
+ncol(service_data) ## 23
+
+```
+
+How many cities are represented in the data?
+
+```{r}
+
+table(service_data$city) ## 36
+
+```
+
+What is the most frequently occuring issue type? Assign to variable issue_type.
+
+```{r}
+
+issue_type <- table(service_data$issue_type) %>%
+  as.data.frame() ## 311 ACTIVATION - FPL (POWER LINE DOWN/POWER OUTAGE)
+
+issue_type <- issue_type[order(-issue_type$Freq),]
+
+summary(as.data.frame(service_data$issue_type)) #treats this as factor
+  #summary(service_data$issue_type) #treats this as a character
+
+```
+
+Create a dataframe with the frequencies of each Ticket Status and their percentage from the whole. What percentage of tickets have a status of ‘CLOSED’? Name the columns and save the output as a csv titled ticket_status.csv
+
+```{r}
+
+ticket_status_summary <- table(service_data$ticket_status) %>%
+  as.data.frame()
+
+names(ticket_status_summary) <- c("Ticket_Status", "Count")
+ #colnames(ticket_status_summary) <- c("Ticket_Status", "Count", "Perc_of_Total") 
+
+ticket_status_summary$perc_of_total <- ( ticket_status_summary$Count / sum(ticket_status_summary$Count) ) * 100
+
+ #ticket_status_summary
+
+write_csv(ticket_status_summary, path = "Ticket_Status.csv")
+
+```
+
+1. Make sure your variables related to Dates are Date data types. If they aren’t, convert them to dates with the format month/day/year.
+
+```{r}
+
+#summary(service_data)
+
+service_data$ticket_created_date_time <- as.Date(service_data$ticket_created_date_time,"%m/%d/%Y")
+service_data$ticket_last_updated_date_time <- as.Date(service_data$ticket_last_updated_date_time,"%m/%d/%Y")
+service_data$ticket_closed_date_time <- as.Date(service_data$ticket_closed_date_time, "%m/%d/%Y")
+
+```
+
+2. Create a new variable, open_30, with only tickets that are OPEN and were created more than 30 days ago.
+   How many rows do you have in your new open_30 variable?
+
+```{r}
+
+open_30 <-  service_data[ticket_created_date_time < ( Sys.Date() - 30 ) & service_data$ticket_status == "OPEN", ]
+ # & means AND in a logical way
+open <-  service_data[service_data$ticket_status == "OPEN", ]
+
+
+dim(open_30) ## 3953
+dim(open)
+dim(service_data)
+
+#Why are the results displayed in TRUE and FALSE?
+
+```
+
+3. We actually have a different number of days as a goal depending on the type of issue, and you decide that even though some tickets have been open for more than 30 days, if the goal is greater than 30 days, you won’t worry about those yet. Create a new variable as part of your dataset for the number of days the ticket has been open.
+
+```{r}
+
+#Why are the results in days? Because the result was not converted to integer.
+
+open_30$num_of_days_open <- as.integer( Sys.Date() - open_30$ticket_created_date_time )
+open_30$num_of_days_open
+summary(open_30$num_of_days_open)
+
+```
+
+4. Create a new variable overdue and only keep the issues that are greater than 30 days and are over the goal days.
+
+```{r}
+
+overdue <-  open_30[ open_30$num_of_days_open > open_30$goal_days, ]
+
+overdue
+
+```
+
+5. Write the overdue dataset to a new csv called Overdue_Tickets.csv
+
+```{r}
+
+write_csv(overdue, path = "Overdue_Tickets.csv")
+
+```
+
+6. How do the issue types in these overdue tickets compare to the entire list of issues?
+
+```{r}
+
+issue_type2 <- table(overdue$issue_type) %>% as.data.frame()
+issue_type2 <- issue_type2[order(-issue_type2$Freq),]
+
+issue_type2
+
+```
+
+7. Commit your R Notebook with the documented workflow and push it up to your Github page. (Heads up: Your Overdue_Tickets.csv file should be significantly smaller than the original file, make sure you do not commit and attempt to push any file larger than 100MB to your github page.)
